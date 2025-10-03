@@ -2,8 +2,8 @@ package test.task03.models;
 
 public class Student extends Person{
 
-    private String group;
-    private double scholarship;
+    private final String group;
+    private final double scholarship;
 
     public Student(String name, String lastName, String pesel, String city, String group, double scholarship) {
         super(name, lastName, pesel, city);

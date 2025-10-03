@@ -1,6 +1,5 @@
 package test.task04.models;
 
-import java.util.Objects;
 
 public class Circle extends BaseFigure implements Shape {
 

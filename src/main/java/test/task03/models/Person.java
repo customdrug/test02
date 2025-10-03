@@ -3,10 +3,10 @@ package test.task03.models;
 import java.util.Objects;
 
 public abstract class Person {
-    private String name;
-    private String lastName;
-    private String pesel;
-    private String city;
+    private final String name;
+    private final String lastName;
+    private final String pesel;
+    private final String city;
 
     protected Person(String name, String lastName, String pesel, String city) {
         this.name = name;

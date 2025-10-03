@@ -17,9 +17,6 @@ public enum ShapeType {
         return code;
     }
 
-    public String pl() {
-        return pl;
-    }
 
     public static ShapeType fromCode(String code) {
         String c = code.trim().toUpperCase();

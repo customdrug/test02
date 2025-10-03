@@ -2,8 +2,8 @@ package test.task03.models;
 
 public class Employee extends Person {
 
-    private String position;
-    private double salary;
+    private final String position;
+    private final double salary;
 
     public Employee(String name, String lastName, String pesel, String city, String position, double salary) {
         super(name, lastName, pesel, city);

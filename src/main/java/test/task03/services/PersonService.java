@@ -3,11 +3,6 @@ package test.task03.services;
 import test.task03.models.Gender;
 import test.task03.models.Person;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 public final class PersonService {
 
     private PersonService() {

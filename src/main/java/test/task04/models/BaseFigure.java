@@ -17,8 +17,4 @@ public abstract class BaseFigure implements Shape {
         ensureNumber();
         return "Figura nr " + no + ": " + descriptionPl();
     }
-
-    public static void resetCounter() {
-        NEXT_NO = 0;
-    }
 }

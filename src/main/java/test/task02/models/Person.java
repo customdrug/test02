@@ -1,7 +1,7 @@
 package test.task02.models;
 
 import java.time.LocalDate;
-import java.util.Objects;
+
 
 abstract class Person {
     private final int id;
