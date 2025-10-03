@@ -35,7 +35,7 @@ public class Rectangle extends BaseFigure implements Shape {
 
     @Override
     public String descriptionPl() {
-        return "Prostokat o bokach " + a + "x" + b + ".";
+        return ShapeType.RECTANGLE.pl() + " o bokach " + a + "x" + b + ".";
     }
 
     @Override

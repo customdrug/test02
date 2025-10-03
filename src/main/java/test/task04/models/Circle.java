@@ -29,7 +29,7 @@ public class Circle extends BaseFigure implements Shape {
     @Override
     public String descriptionPl() {
         String rTxt = (r == Math.rint(r)) ? String.valueOf((int) r) : String.valueOf(r);
-        return "Koło o promienu " + rTxt + ".";
+        return ShapeType.CIRCLE.pl() + " o promieniu " + rTxt + ".";
     }
 
     @Override

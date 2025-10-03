@@ -29,7 +29,7 @@ public class Square extends BaseFigure implements Shape {
 
     @Override
     public String descriptionPl() {
-        return "Kwadrat o boku " + a + ".";
+        return ShapeType.SQUARE.pl() + " o boku " + a + ".";
     }
 
     @Override

@@ -1,6 +1,7 @@
 package test.task04.services;
 
-import test.task04.models.*;
+import test.task04.models.Shape;
+import test.task04.models.ShapeType;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -9,8 +10,7 @@ import java.util.*;
 
 public final class ShapeIO {
 
-    private ShapeIO() {
-    }
+    private ShapeIO() {}
 
     public static void write(List<Shape> shapes, Path file) throws IOException {
         try (BufferedWriter bw = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
@@ -28,39 +28,13 @@ public final class ShapeIO {
             String raw;
             while ((raw = br.readLine()) != null) {
                 String line = raw.trim();
-                if (line.isEmpty() || line.startsWith("#")) {
-                    continue;
-                }
+                if (line.isEmpty() || line.startsWith("#")) continue;
 
                 String[] parts = line.split(";");
                 ShapeType type = ShapeType.fromCode(parts[0]);
-
-                switch (type) {
-                    case SQUARE: {
-                        if (parts.length < 2) {
-                            continue;
-                        }
-                        int a = Integer.parseInt(parts[1]);
-                        out.add(new Square(a));
-                        break;
-                    }
-                    case CIRCLE: {
-                        if (parts.length < 2) {
-                            continue;
-                        }
-                        double r = Double.parseDouble(parts[1]);
-                        out.add(new Circle(r));
-                        break;
-                    }
-                    case RECTANGLE: {
-                        if (parts.length < 3) {
-                            continue;
-                        }
-                        int a = Integer.parseInt(parts[1]);
-                        int b = Integer.parseInt(parts[2]);
-                        out.add(new Rectangle(a, b));
-                        break;
-                    }
+                Shape shape = type.parse(parts);
+                if (shape != null) {
+                    out.add(shape);
                 }
             }
         }
