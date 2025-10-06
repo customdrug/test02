@@ -4,9 +4,10 @@ import test.task02.models.Doctor;
 import test.task02.models.Patient;
 import test.task02.models.Visit;
 
-
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class DataAnalyzer {
     private final List<Doctor> doctors;
@@ -18,6 +19,25 @@ public class DataAnalyzer {
         this.patients = patients;
         this.visits = visits;
     }
+
+
+    private int countUniquePatients(Doctor d) {
+        Set<Patient> set = new HashSet<>();
+        for (Visit v : d.getVisits()) {
+            set.add(v.getPatient());
+        }
+        return set.size();
+    }
+
+
+    private int countUniqueDoctors(Patient p) {
+        Set<Doctor> set = new HashSet<>();
+        for (Visit v : p.getVisits()) {
+            set.add(v.getDoctor());
+        }
+        return set.size();
+    }
+
 
     public Doctor doctorWithMostVisits() {
         Doctor best = null;
@@ -45,6 +65,7 @@ public class DataAnalyzer {
         return best;
     }
 
+
     public String mostPopularSpecialty() {
         String bestSpec = null;
         int bestCount = -1;
@@ -65,7 +86,6 @@ public class DataAnalyzer {
         return bestSpec;
     }
 
-
     public int yearWithMostVisits() {
         int bestYear = -1;
         int bestCount = -1;
@@ -74,7 +94,9 @@ public class DataAnalyzer {
             int year = ref.getDate().getYear();
             int count = 0;
             for (Visit v : visits) {
-                if (v.getDate().getYear() == year) count++;
+                if (v.getDate().getYear() == year) {
+                    count++;
+                }
             }
             if (count > bestCount) {
                 bestCount = count;
@@ -83,7 +105,6 @@ public class DataAnalyzer {
         }
         return bestYear;
     }
-
 
     public List<Doctor> top5OldestDoctors() {
         List<Doctor> pool = new ArrayList<>(doctors);
@@ -100,7 +121,6 @@ public class DataAnalyzer {
         }
         return result;
     }
-
 
     public List<Doctor> top5DoctorsByVisits() {
         List<Doctor> pool = new ArrayList<>(doctors);
@@ -122,39 +142,38 @@ public class DataAnalyzer {
     public List<Patient> patientsWithAtLeastNDoctors(int n) {
         List<Patient> out = new ArrayList<>();
         for (Patient p : patients) {
-            if (p.getUniqueDoctors().size() >= n) {
+            if (countUniqueDoctors(p) >= n) {
                 out.add(p);
             }
         }
         return out;
     }
 
-
     public List<Doctor> doctorsWithExactlyOnePatient() {
         List<Doctor> out = new ArrayList<>();
         for (Doctor d : doctors) {
-            if (d.getUniquePatients().size() == 1) {
+            if (countUniquePatients(d) == 1) {
                 out.add(d);
             }
         }
         return out;
     }
 
-
     public int maxUniqueDoctorsPerPatient() {
         int best = 0;
         for (Patient p : patients) {
-            int count = p.getUniqueDoctors().size();
+            int count = countUniqueDoctors(p);
             if (count > best) best = count;
         }
         return best;
     }
 
+
     public int minUniquePatientsPerDoctor() {
         if (doctors.isEmpty()) return 0;
         int min = Integer.MAX_VALUE;
         for (Doctor d : doctors) {
-            int count = d.getUniquePatients().size();
+            int count = countUniquePatients(d);
             if (count < min) min = count;
         }
         return min == Integer.MAX_VALUE ? 0 : min;

@@ -18,9 +18,9 @@ public final class ParsingUtils {
 
     public static BufferedReader openReader(Path path) throws IOException {
         try {
-            return Files.newBufferedReader(path, StandardCharsets.UTF_8);
-        } catch (MalformedInputException mie) {
             return Files.newBufferedReader(path, WINDOWS_1250);
+        } catch (MalformedInputException mie) {
+            return Files.newBufferedReader(path, StandardCharsets.UTF_8);
         }
     }
 

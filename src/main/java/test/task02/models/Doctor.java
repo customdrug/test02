@@ -9,7 +9,6 @@ import java.util.Set;
 public class Doctor extends Person {
     private final String specialty;
     private final String nip;
-
     private final List<Visit> visits = new ArrayList<>();
 
     public Doctor(int id, String lastName, String firstName,
@@ -37,14 +36,13 @@ public class Doctor extends Person {
         return unique;
     }
 
-
     @Override
     public String toString() {
         return super.toString() +
                 ", specialty='" + specialty + '\'' +
                 ", nip='" + nip + '\'' +
                 ", visits=" + visits.size() +
-                ", uniquePatients=" + getUniquePatients() +
+                ", uniquePatients=" + getUniquePatients().size() +
                 '}';
     }
 }
