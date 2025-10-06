@@ -12,9 +12,9 @@ import java.util.*;
 public class DataAnalyzer {
 
     private final List<Child> children;
-    private final Map<Integer, Mother> mothers;
+    private final List<Mother> mothers;
 
-    public DataAnalyzer(List<Child> children, Map<Integer, Mother> mothers) {
+    public DataAnalyzer(List<Child> children, List<Mother> mothers) {
         this.children = Objects.requireNonNull(children, "children");
         this.mothers = Objects.requireNonNull(mothers, "mothers");
     }
@@ -79,11 +79,7 @@ public class DataAnalyzer {
         for (Child c : children) {
             if (c == null) continue;
             if (c.getGender() != Gender.DAUGHTER) continue;
-            if (c.getName() == null) continue;
-
             Mother m = c.getMother();
-            if (m == null || m.getName() == null) continue;
-
             if (c.getName().equalsIgnoreCase(m.getName())) {
                 result.add(c);
             }
@@ -93,7 +89,7 @@ public class DataAnalyzer {
 
     public List<Mother> mothersOfTwins() {
         List<Mother> result = new ArrayList<>();
-        for (Mother m : mothers.values()) {
+        for (Mother m : mothers) {
             if (m != null && m.hasTwins()) {
                 result.add(m);
             }
