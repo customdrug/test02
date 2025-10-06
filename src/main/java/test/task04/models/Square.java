@@ -2,7 +2,7 @@ package test.task04.models;
 
 import java.util.Objects;
 
-public class Square extends BaseFigure implements Shape {
+public class Square extends Shape {
 
     private final int a;
 

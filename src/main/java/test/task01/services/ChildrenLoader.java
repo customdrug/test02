@@ -59,7 +59,7 @@ public final class ChildrenLoader {
             throw new IllegalArgumentException("Brak płci w linii " + lineNo + ": " + raw);
         }
         try {
-            return Gender.fromCode(token.charAt(0)); // 'c' lub 's'
+            return Gender.fromCode(token.charAt(0));
         } catch (IllegalArgumentException iae) {
             throw new IllegalArgumentException("Nieprawidłowa płeć '" + token + "' w linii " + lineNo + ": " + raw, iae);
         }

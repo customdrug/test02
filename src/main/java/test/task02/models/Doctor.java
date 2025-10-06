@@ -11,7 +11,6 @@ public class Doctor extends Person {
     private final String nip;
 
     private final List<Visit> visits = new ArrayList<>();
-    private final Set<Patient> uniquePatients = new HashSet<>();
 
     public Doctor(int id, String lastName, String firstName,
                   String specialty, LocalDate birthDate,
@@ -26,11 +25,17 @@ public class Doctor extends Person {
 
     public void addVisit(Visit v) {
         visits.add(v);
-        uniquePatients.add(v.getPatient());
     }
 
     public List<Visit> getVisits() { return visits; }
-    public Set<Patient> getUniquePatients() { return uniquePatients; }
+
+    public Set<Patient> getUniquePatients() {
+        Set<Patient> unique = new HashSet<>();
+        for (Visit v : visits) {
+            unique.add(v.getPatient());
+        }
+        return unique;
+    }
 
 
     @Override
@@ -39,7 +44,7 @@ public class Doctor extends Person {
                 ", specialty='" + specialty + '\'' +
                 ", nip='" + nip + '\'' +
                 ", visits=" + visits.size() +
-                ", uniquePatients=" + uniquePatients.size() +
+                ", uniquePatients=" + getUniquePatients() +
                 '}';
     }
 }

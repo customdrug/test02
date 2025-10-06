@@ -36,12 +36,10 @@ public class Mother extends Person {
     public boolean hasTwins() {
         for (int i = 0; i < children.size(); i++) {
             Child a = children.get(i);
-            LocalDate da = (a == null) ? null : a.getBirthDate();
-            if (da == null) continue;
+            LocalDate da = a.getBirthDate();
             for (int j = i + 1; j < children.size(); j++) {
                 Child b = children.get(j);
-                LocalDate db = (b == null) ? null : b.getBirthDate();
-                if (db == null) continue;
+                LocalDate db = b.getBirthDate();
                 if (da.equals(db)) return true;
             }
         }

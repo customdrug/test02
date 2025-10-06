@@ -1,7 +1,7 @@
 package test.task04.models;
 
 
-public class Circle extends BaseFigure implements Shape {
+public class Circle extends Shape {
 
     private final double r;
 

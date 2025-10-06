@@ -12,9 +12,9 @@ public class TaskRunner {
 
     public static void main(String[] args) throws Exception {
         List<Shape> shapes = Arrays.asList(
-                new Square(10),
-                new Circle(10),
-                new Rectangle(10, 20)
+                Shape.createSquare(10),
+                Shape.createCircle(20),
+                Shape.createRectangle(10, 20)
         );
 
         for (Shape s : shapes) {

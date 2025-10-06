@@ -2,7 +2,7 @@ package test.task04.models;
 
 import java.util.Objects;
 
-public class Rectangle extends BaseFigure implements Shape {
+public class Rectangle extends Shape {
 
     private final int a;
     private final int b;
