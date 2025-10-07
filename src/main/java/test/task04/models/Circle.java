@@ -1,50 +1,35 @@
 package test.task04.models;
 
-
-public class Circle extends Shape {
-
+public final class Circle extends Shape {
     private final double r;
 
     public Circle(double r) {
-        if (r <= 0) {
-            throw new IllegalArgumentException("Radius must be > 0");
-        }
+        super(0);
+        if (r <= 0) throw new IllegalArgumentException("Promień > 0");
         this.r = r;
     }
 
-    public double getR() {
-        return r;
+    Circle(int id, double r) {
+        super(id);
+        if (r <= 0) throw new IllegalArgumentException("Promień > 0");
+        this.r = r;
     }
 
-    @Override
-    public double calculatePerimeter() {
-        return 2 * Math.PI * r;
-    }
-
-    @Override
-    public double calculateArea() {
-        return Math.PI * r * r;
-    }
+    @Override public double calculatePerimeter() { return 2 * Math.PI * r; }
+    @Override public double calculateArea() { return Math.PI * r * r; }
 
     @Override
     public String descriptionPl() {
-        String rTxt = (r == Math.rint(r)) ? String.valueOf((int) r) : String.valueOf(r);
-        return ShapeType.CIRCLE.pl() + " o promieniu " + rTxt + ".";
+        String t = (r == Math.rint(r)) ? String.valueOf((int) r) : String.valueOf(r);
+        return "Koło o promieniu " + t + ".";
     }
 
-    @Override
-    public String toStorageLine() {
-        return ShapeType.CIRCLE.code() + ";" + r;
-    }
+    @Override public String toStorageLine() { return ShapeType.CIRCLE.code() + ";" + r; }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Circle)) {
-            return false;
-        }
+        if (this == o) return true;
+        if (!(o instanceof Circle)) return false;
         Circle other = (Circle) o;
         return Double.compare(r, other.r) == 0;
     }
@@ -53,4 +38,5 @@ public class Circle extends Shape {
     public int hashCode() {
         return Double.hashCode(r);
     }
+
 }

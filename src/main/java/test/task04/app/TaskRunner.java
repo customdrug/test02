@@ -35,5 +35,8 @@ public class TaskRunner {
         for (Shape s : readBack) {
             System.out.println(s);
         }
+
+        Circle testCircle = new Circle(5);
+        System.out.println(testCircle);
     }
 }
