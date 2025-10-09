@@ -4,16 +4,9 @@ public final class Circle extends Shape {
     private final double r;
 
     public Circle(double r) {
-        super(0);
-        if (r <= 0) throw new IllegalArgumentException("Promień > 0");
         this.r = r;
     }
 
-    Circle(int id, double r) {
-        super(id);
-        if (r <= 0) throw new IllegalArgumentException("Promień > 0");
-        this.r = r;
-    }
 
     @Override public double calculatePerimeter() { return 2 * Math.PI * r; }
     @Override public double calculateArea() { return Math.PI * r * r; }

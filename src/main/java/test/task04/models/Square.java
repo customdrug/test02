@@ -4,14 +4,6 @@ public final class Square extends Shape {
     private final int a;
 
     public Square(int a) {
-        super(0);
-        if (a <= 0) throw new IllegalArgumentException("Bok > 0");
-        this.a = a;
-    }
-
-    Square(int id, int a) {
-        super(id);
-        if (a <= 0) throw new IllegalArgumentException("Bok > 0");
         this.a = a;
     }
 

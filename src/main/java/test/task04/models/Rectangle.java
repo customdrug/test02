@@ -4,14 +4,6 @@ public final class Rectangle extends Shape {
     private final int a, b;
 
     public Rectangle(int a, int b) {
-        super(0);
-        if (a <= 0 || b <= 0) throw new IllegalArgumentException("Boki > 0");
-        this.a = a; this.b = b;
-    }
-
-    Rectangle(int id, int a, int b) {
-        super(id);
-        if (a <= 0 || b <= 0) throw new IllegalArgumentException("Boki > 0");
         this.a = a; this.b = b;
     }
 
