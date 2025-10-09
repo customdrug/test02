@@ -7,6 +7,7 @@ public final class Rectangle extends Shape {
         this.a = a; this.b = b;
     }
 
+
     @Override public double calculatePerimeter() { return 2.0 * (a + b); }
     @Override public double calculateArea() { return 1.0 * a * b; }
     @Override public String descriptionPl() { return "Prostokat o bokach " + a + "x" + b + "."; }

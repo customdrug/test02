@@ -7,7 +7,6 @@ public final class Circle extends Shape {
         this.r = r;
     }
 
-
     @Override public double calculatePerimeter() { return 2 * Math.PI * r; }
     @Override public double calculateArea() { return Math.PI * r * r; }
 
