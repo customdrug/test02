@@ -10,25 +10,25 @@ public abstract class Shape {
         this.id = id;
     }
 
-    public static Shape createSquare(int side) {
+    public static Square createSquare(int side) {
         if (side <= 0)
             throw new IllegalArgumentException("Bok nie może być mniejszy ani równy zero");
-        Shape s = new Square(side);
-        s.setId(IdGenerator.nextId());
+        Square s = new Square(side);
+        ((Shape)s).setId(IdGenerator.nextId());
         return s;
     }
-    public static Shape createCircle(double radius) {
+    public static Circle createCircle(double radius) {
         if (radius <= 0)
             throw new IllegalArgumentException("Promień nie może być mniejszy ani równy zero");
-        Shape c = new Circle(radius);
-        c.setId(IdGenerator.nextId());
+        Circle c = new Circle(radius);
+        ((Shape)c).setId(IdGenerator.nextId());
         return c;
     }
-    public static Shape createRectangle(int a, int b) {
+    public static Rectangle createRectangle(int a, int b) {
         if (a <= 0 || b <= 0)
             throw new IllegalArgumentException("Żaden z boków nie może być mniejszy ani równy zero");
-        Shape r = new Rectangle(a, b);
-        r.setId(IdGenerator.nextId());
+        Rectangle r = new Rectangle(a, b);
+        ((Shape)r).setId(IdGenerator.nextId());
         return r;
     }
 
